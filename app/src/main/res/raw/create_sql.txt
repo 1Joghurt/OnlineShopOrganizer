@@ -1,0 +1,81 @@
+CREATE TABLE [Order] (
+	"Order_id" INTEGER NOT NULL UNIQUE,
+	"Date" TEXT NOT NULL,
+	"Note" TEXT NULL,
+	"IsClosed" INTEGER NOT NULL DEFAULT 0,
+	PRIMARY KEY("Order_id" AUTOINCREMENT)
+);
+
+--Trader
+CREATE TABLE Trader (
+	"Trader_id" INTEGER NOT NULL UNIQUE,
+	"Name" TEXT NOT NULL,
+	"Url" TEXT NULL,
+	"Active" INTEGER NOT NULL DEFAULT 1,
+	"Api" INTEGER NOT NULL DEFAULT 0,
+	"Identifier" TEXT NULL,
+	"User" TEXT NULL,
+	"Password" TEXT NULL,
+	"Mail" TEXT NULL,
+	PRIMARY KEY("Trader_id" AUTOINCREMENT)
+);
+
+CREATE TABLE OrderStatus (
+	"OrderStatus_id" INTEGER NOT NULL UNIQUE,
+	"Name" TEXT NOT NULL,
+	"IsClosed" INTEGER NOT NULL DEFAULT 0,
+	PRIMARY KEY("OrderStatus_id" AUTOINCREMENT)
+);
+
+CREATE TABLE OrderStatusMapping (
+	"Trader_id" INTEGER NOT NULL,
+	"OrderStatus_id" INTEGER NOT NULL,
+	PRIMARY KEY("Trader_id", "OrderStatus_id"),
+	FOREIGN KEY("Trader_id") REFERENCES Trader(Trader_id),
+	FOREIGN KEY("OrderStatus_id") REFERENCES OrderStatus(OrderStatus_id)
+);
+
+CREATE TABLE TraderDetails (
+	"Order_id" INTEGER NOT NULL UNIQUE,
+	"Trader_id" INTEGER NOT NULL,
+	"Ordernumber" TEXT NOT NULL,
+	"OrderStatus_id" INTEGER NULL,
+	PRIMARY KEY("Order_id"),
+	FOREIGN KEY("Trader_id") REFERENCES Trader(Trader_id),
+	FOREIGN KEY("OrderStatus_id") REFERENCES OrderStatus(OrderStatus_id)
+);
+
+--Shipper
+CREATE TABLE Shipper (
+	"Shipper_id" INTEGER NOT NULL UNIQUE,
+	"Name" TEXT NOT NULL,
+	"Url" TEXT NULL,
+	"Active" INTEGER NOT NULL DEFAULT 1,
+	"Api" INTEGER NOT NULL DEFAULT 0,
+	"Identifier" TEXT NULL,
+	PRIMARY KEY("Shipper_id" AUTOINCREMENT)
+);
+
+CREATE TABLE ShippingStatus (
+	"ShippingStatus_id" INTEGER NOT NULL UNIQUE,
+	"Name" TEXT NOT NULL,
+	PRIMARY KEY("ShippingStatus_id" AUTOINCREMENT)
+);
+
+CREATE TABLE ShippingStatusMapping (
+	"Shipper_id" INTEGER NOT NULL,
+	"ShippingStatus_id" INTEGER NOT NULL,
+	PRIMARY KEY("Shipper_id", "ShippingStatus_id"),
+	FOREIGN KEY("Shipper_id") REFERENCES Shipper(Shipper_id),
+	FOREIGN KEY("ShippingStatus_id") REFERENCES ShippingStatus(ShippingStatus_id)
+);
+
+CREATE TABLE ShippingDetails (
+	"Order_id" INTEGER NOT NULL UNIQUE,
+	"Shipper_id" INTEGER NOT NULL,
+	"Trackingnumber" TEXT NOT NULL,
+	"ShippingStatus_id" INTEGER NULL,
+	PRIMARY KEY("Order_id"),
+	FOREIGN KEY("Shipper_id") REFERENCES Shipper(Shipper_id),
+	FOREIGN KEY("ShippingStatus_id") REFERENCES ShippingStatus(ShippingStatus_id)
+);

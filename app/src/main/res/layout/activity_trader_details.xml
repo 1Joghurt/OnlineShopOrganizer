@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.trader_details">
+
+    <Button
+        android:id="@+id/btn_new_trader"
+        android:layout_width="309dp"
+        android:layout_height="52dp"
+        android:text="@string/save_trader"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <EditText
+        android:id="@+id/text_trader_name"
+        android:layout_width="220dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/text_trader_mail"
+        android:layout_width="220dp"
+        android:layout_height="52dp"
+        android:contentDescription="@string/e_mail"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:textAlignment="viewStart"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/text_trader_name" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:text="@string/e_mail"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/tv_state"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:text="@string/possible_state_final"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/tv_state_possible"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:text="@string/new_state"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_state" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:text="@string/name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_trader_name"
+        android:layout_width="220dp"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_trader_mail"
+        android:layout_width="220dp"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/text_trader_mail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_trader_name" />
+
+    <LinearLayout
+        android:id="@+id/ll_state"
+        android:layout_width="220dp"
+        android:layout_height="370dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/tv_state"
+        app:layout_constraintTop_toBottomOf="@+id/text_trader_mail">
+        <ListView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/trader_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_remove_state_trader"
+        android:layout_width="110dp"
+        android:layout_height="52dp"
+        android:text="@string/remove"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/cb_final"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_state_trader" />
+
+    <Button
+        android:id="@+id/btn_add_state_trader"
+        android:layout_width="110dp"
+        android:layout_height="52dp"
+        android:text="@string/add"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/cb_final"
+        app:layout_constraintTop_toBottomOf="@+id/text_new_state_trader" />
+
+    <EditText
+        android:id="@+id/text_new_state_trader"
+        android:layout_width="220dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/tv_state"
+        app:layout_constraintTop_toBottomOf="@+id/ll_state" />
+
+    <CheckBox
+        android:id="@+id/cb_final"
+        android:layout_width="110dp"
+        android:layout_height="52dp"
+        android:text="@string/final_tag"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_state"
+        app:layout_constraintTop_toBottomOf="@+id/text_new_state_trader" />
+
+    <EditText
+        android:id="@+id/text_username"
+        android:layout_width="220dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_password"
+        app:layout_constraintTop_toBottomOf="@+id/tv_trader_mail" />
+
+    <EditText
+        android:id="@+id/text_password"
+        android:layout_width="220dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:textSize="16sp"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toEndOf="@+id/tv_password"
+        app:layout_constraintTop_toBottomOf="@+id/text_username" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:text="@string/username"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/tv_password"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:text="@string/passwort"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
